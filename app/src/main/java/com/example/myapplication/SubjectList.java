@@ -60,8 +60,8 @@ public class SubjectList extends AppCompatActivity {
         obj3.setLocation("Innovation Hall 132");
         obj3.setTitle("Operating System");
         obj3.setDays("M-W");
-        obj3.setLat("37.0902");
-        obj3.setLongi("95.7129");
+        obj3.setLat("38.828630");
+        obj3.setLongi("-77.307440");
 
         SubjectClass obj4 = new SubjectClass();
         obj4.setEndTime("14:10");
