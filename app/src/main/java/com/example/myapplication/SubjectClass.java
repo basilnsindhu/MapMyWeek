@@ -10,6 +10,13 @@ public class SubjectClass {
     String lat;
     String id;
 
+    public int getAlarmID() { return alarmID; }
+
+    public void setAlarmID(int alarmID) { this.alarmID = alarmID; }
+
+    int alarmID; // For easy control of multiple Alarms.
+    // Format: obj# * 100 -> obj = 000, obj1 = 100
+
 
 
     public String getDays(){ return days;}

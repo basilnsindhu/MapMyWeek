@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,8 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
+
+   // private NotificationHelper mNotificationHelper;
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -21,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Button schedule = findViewById(R.id.btn_schedule);
         Button manage = findViewById(R.id.btn_addrem);
         Button gotoclass = findViewById(R.id.btn_nav);
+       // mNotificationHelper = new NotificationHelper(this);
 
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
