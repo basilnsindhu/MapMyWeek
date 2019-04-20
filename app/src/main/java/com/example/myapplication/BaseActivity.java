@@ -43,6 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity implements WeekView
         // Show a toast message about the touched event.
         mWeekView.setOnEventClickListener(this);
 
+        mWeekView.notifyDatasetChanged();
+
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
         mWeekView.setMonthChangeListener(this);
@@ -114,6 +116,7 @@ public abstract class BaseActivity extends AppCompatActivity implements WeekView
 
         return super.onOptionsItemSelected(item);
     }
+
 
     /**
      * Set up a date time interpreter which will show short date values when in week view and long

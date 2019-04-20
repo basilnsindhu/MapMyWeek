@@ -1,8 +1,12 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
+
+
 import com.alamkanak.weekview.WeekViewEvent;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -11,16 +15,104 @@ import java.util.List;
  * Website: http://alamkanak.github.io
  */
 public class BasicActivity extends BaseActivity {
-    private List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
-    public void addToList(WeekViewEvent event){
-        events.add(event);
-    }
 
+
+
+    /*void addEvent(int newYear, int newMonth){
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth - 1);
+        startTime.set(Calendar.YEAR, newYear);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR, 2);
+        endTime.set(Calendar.MONTH, newMonth - 1);
+        WeekViewEvent event = new WeekViewEvent(1, "Event 1", startTime, endTime);
+        onMonthChange(newYear,newMonth);
+        //event.setColor(getResources().getColor(R.color.event_color_02));
+        events.add(event); }
+*/
 
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-        // Populate the week view with some events.
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor cursor = db.getAllSUBJECTs();
+        ArrayList<SubjectClass> list = new ArrayList<>();
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        if(cursor.moveToFirst()){
+            while (!cursor.isAfterLast()) {
+                SubjectClass obj = new SubjectClass();
+//                Toast.makeText(getApplicationContext(),cursor.getString(cursor.getColumnIndex("_id")),Toast.LENGTH_SHORT).show();
+                obj.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+                obj.setLongi(cursor.getString(cursor.getColumnIndex("long")));
+                obj.setLat(cursor.getString(cursor.getColumnIndex("lat")));
+                obj.setLocation(cursor.getString(cursor.getColumnIndex("loc")));
+                obj.setInstructor(cursor.getString(cursor.getColumnIndex("inst")));
+                obj.setEndTime(cursor.getString(cursor.getColumnIndex("endtime")));
+                obj.setStarttime(cursor.getString(cursor.getColumnIndex("starttime")));
+                obj.setId(cursor.getString(cursor.getColumnIndex("_id")));
+
+                list.add(obj);
+                cursor.moveToNext();
+            }
+        }
+
+
+        for(int i=0;i<list.size();i++){
+            Calendar startTime = Calendar.getInstance();
+            SubjectClass temp = list.get(i);
+            startTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getStarttime()));
+            startTime.set(Calendar.MINUTE, getMin(temp.getStarttime()));
+            startTime.set(Calendar.MONTH, newMonth - 1);
+            startTime.set(Calendar.YEAR, newYear);
+            Calendar endTime = (Calendar) startTime.clone();
+            //endTime.add(Calendar.HOUR, getHour(temp.getEndTime()));
+            endTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getEndTime()));
+            endTime.set(Calendar.MINUTE, getMin(temp.getEndTime()));
+            endTime.set(Calendar.MONTH, newMonth - 1);
+            WeekViewEvent event = new WeekViewEvent(1, temp.getTitle(), startTime, endTime);
+            //event.setColor(getResources().getColor(R.color.event_color_01));
+            events.add(event);
+        }
+
+
+
+         /*Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth - 1);
+        startTime.set(Calendar.YEAR, newYear);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR, 2);
+        endTime.set(Calendar.MONTH, newMonth - 1);
+        WeekViewEvent event = new WeekViewEvent(1, "Event 1", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.event_color_01));
+        events.add(event);*/
+        return events;
+    }
+
+
+    public int getHour(String s){
+        int hour = 0;
+        String[] split = s.split(":");
+
+        hour = Integer.parseInt(split[0]);
+        return hour;
+    }
+
+    public int getMin(String s){
+        int min = 0;
+        String[] split = s.split(":");
+        String temp = split[1];
+        min = Integer.parseInt(temp);
+        return min;
+    }
+
+
+    // Populate the week view with some events.
+        //List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+
 
         /*Calendar startTime = Calendar.getInstance();
         startTime.set(Calendar.HOUR_OF_DAY, 3);
@@ -34,7 +126,7 @@ public class BasicActivity extends BaseActivity {
         event.setColor(getResources().getColor(R.color.event_color_01));
         events.add(event);
 
-        startTime = Calendar.getInstance();
+       /* startTime = Calendar.getInstance();
         startTime.set(Calendar.HOUR_OF_DAY, 3);
         startTime.set(Calendar.MINUTE, 30);
         startTime.set(Calendar.MONTH, newMonth-1);
@@ -161,7 +253,5 @@ public class BasicActivity extends BaseActivity {
         event.setColor(getResources().getColor(R.color.event_color_01));
         events.add(event);*/
 
-        return events;
-    }
 
 }

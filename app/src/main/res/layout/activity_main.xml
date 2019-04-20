@@ -9,6 +9,7 @@
 
     <EditText
         android:id="@+id/etusername"
+        android:paddingLeft="10dp"
         android:layout_width="208dp"
         android:layout_height="34dp"
         android:layout_marginStart="8dp"
@@ -18,11 +19,11 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="#11000000"
-        android:drawableLeft="@drawable/ic_action_username"
         android:drawablePadding="3dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:lineSpacingExtra="8sp"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +33,7 @@
 
     <EditText
         android:id="@+id/etpassword"
+        android:paddingLeft="10dp"
         android:layout_width="210dp"
         android:layout_height="28dp"
         android:layout_marginStart="8dp"
@@ -41,7 +43,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="#11000000"
-        android:drawableLeft="@drawable/ic_action_password"
         android:drawablePadding="3dp"
         android:ems="10"
         android:hint="Password"
