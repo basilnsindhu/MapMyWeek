@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import android.database.Cursor;
 
-
 import com.alamkanak.weekview.WeekViewEvent;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -76,7 +78,7 @@ public class BasicActivity extends BaseActivity {
             while(j<2) {
                 startTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getStarttime()));
                 startTime.set(Calendar.MINUTE, getMin(temp.getStarttime()));
-               // startTime.set(Calendar.DAY_OF_MONTH,Calendar.);
+                startTime.set(Calendar.DAY_OF_MONTH,day1);
                 startTime.set(Calendar.MONTH, newMonth - 1);
                 startTime.set(Calendar.YEAR, newYear);
                 Calendar endTime = (Calendar) startTime.clone();
@@ -111,24 +113,31 @@ public class BasicActivity extends BaseActivity {
 
     public int getDay1(String s){
         int day = 0;
+        //Calendar today = Calendar.getInstance();
+        LocalDate ld = LocalDate.now();
+
         String[] split = s.split("-");
-        if(split[0].equals("M")){day = 1;}
-        else if(split[0].equals("T")){day = 2;}
-        else if(split[0].equals("W")){day = 3;}
-        else if(split[0].equals("R")){day = 4;}
-        else if(split[0].equals("F")){day = 15;}
+        if(split[0].equals("M")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));}
+        else if(split[0].equals("T")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));}
+        else if(split[0].equals("W")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));}
+        else if(split[0].equals("R")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));}
+        else if(split[0].equals("F")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));}
+        day = ld.getDayOfMonth();
         return day;
 
     }
 
     public int getDay2(String s){
         int day = 0;
+        LocalDate ld = LocalDate.now();
+
         String[] split = s.split("-");
-        if(split[1].equals("M")){day = 1;}
-        else if(split[1].equals("T")){day = 2;}
-        else if(split[1].equals("W")){day = 3;}
-        else if(split[1].equals("R")){day = 4;}
-        else if(split[1].equals("F")){day = 15;}
+        if(split[1].equals("M")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));}
+        else if(split[1].equals("T")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));}
+        else if(split[1].equals("W")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));}
+        else if(split[1].equals("R")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));}
+        else if(split[1].equals("F")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));}
+        day = ld.getDayOfMonth();
         return day;
 
     }
