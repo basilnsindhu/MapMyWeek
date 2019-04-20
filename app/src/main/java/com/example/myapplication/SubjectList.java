@@ -121,7 +121,7 @@ public class SubjectList extends AppCompatActivity {
                     finish();
                 }
                 //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);basic.addtolist(calendarList);
-                basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
+                //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
 
             }
         });
