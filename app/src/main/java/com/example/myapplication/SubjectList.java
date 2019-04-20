@@ -25,12 +25,12 @@ public class SubjectList extends AppCompatActivity {
     BasicActivity basic = new BasicActivity();
     DBHelper dbHelper;
     SubjectsAdapter adapter;
-    private NotificationHelper mNotificationHelper;
+    //private NotificationHelper mNotificationHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mNotificationHelper = new NotificationHelper(this);
+       // mNotificationHelper = new NotificationHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_list);
         final String positionBack = getIntent().getStringExtra("index");

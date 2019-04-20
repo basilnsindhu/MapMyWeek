@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-   // private NotificationHelper mNotificationHelper;
+   private NotificationHelper mNotificationHelper;
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Button schedule = findViewById(R.id.btn_schedule);
         Button manage = findViewById(R.id.btn_addrem);
         Button gotoclass = findViewById(R.id.btn_nav);
-       // mNotificationHelper = new NotificationHelper(this);
+        mNotificationHelper = new NotificationHelper(this);
 
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override

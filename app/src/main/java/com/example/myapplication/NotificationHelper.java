@@ -17,6 +17,7 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -72,16 +73,29 @@ public class NotificationHelper extends ContextWrapper {
     // Maybe add content and OnClick navigation
     public NotificationCompat.Builder getAlarmChannelNotification(String title, String text) {
         Intent navIntent = new Intent(this, NavActivity.class);
-        navIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, navIntent, 0);
-
-        return new NotificationCompat.Builder(getApplicationContext(), alarm_channel_ID)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark) // Need to add in a notification icon to drawables
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addNextIntentWithParentStack(navIntent);
+            pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            return new NotificationCompat.Builder(getApplicationContext(), alarm_channel_ID)
+                    .setContentTitle(title)
+                    .setContentText(text)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark) // Need to add in a notification icon to drawables
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+        } else {
+            navIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            pendingIntent = PendingIntent.getActivity(this, 0, navIntent, 0);
+            return new NotificationCompat.Builder(getApplicationContext(), alarm_channel_ID)
+                    .setContentTitle(title)
+                    .setContentText(text)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark) // Need to add in a notification icon to drawables
+                    //.setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+        }
 
     }
 
