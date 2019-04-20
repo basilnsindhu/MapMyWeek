@@ -36,9 +36,9 @@ public class SubjectList extends AppCompatActivity {
         final String positionBack = getIntent().getStringExtra("index");
         dbHelper = new DBHelper(getApplicationContext());
         SubjectClass obj = new SubjectClass();
-        obj.setEndTime("10:10");
+        obj.setEndTime("22:10");
         obj.setInstructor("Kershberg");
-        obj.setStarttime("07:20");
+        obj.setStarttime("19:20");
         obj.setDays("W");
         obj.setLocation("Enterprise Hall 178");
         obj.setTitle("Database Concepts");
@@ -47,10 +47,10 @@ public class SubjectList extends AppCompatActivity {
         obj.setAlarmID(0);
 
         SubjectClass obj1 = new SubjectClass();
-        obj1.setEndTime("07:10");
+        obj1.setEndTime("19:10");
         obj1.setInstructor("Sood");
-        obj1.setStarttime("05:25");
-        obj1.setDays("RS");
+        obj1.setStarttime("16:30");
+        obj1.setDays("R");
         obj1.setLocation("Sandbridge Hall 107");
         obj1.setTitle("Security Enginerring");
         obj1.setLat("37.0902");
@@ -63,20 +63,20 @@ public class SubjectList extends AppCompatActivity {
 
 
         SubjectClass obj3 = new SubjectClass();
-        obj3.setEndTime("04:00");
+        obj3.setEndTime("16:00");
         obj3.setInstructor("Cheng");
-        obj3.setStarttime("05:30");
+        obj3.setStarttime("15:15");
         obj3.setLocation("Innovation Hall 132");
         obj3.setTitle("Operating System");
-        obj3.setDays("MW");
-        obj3.setLat("37.0902");
-        obj3.setLongi("95.7129");
+        obj3.setDays("M-W");
+        obj3.setLat("38.828630");
+        obj3.setLongi("-77.307440");
         obj3.setAlarmID(300);
 
         SubjectClass obj4 = new SubjectClass();
-        obj4.setEndTime("02:10");
+        obj4.setEndTime("14:10");
         obj4.setInstructor("Bell");
-        obj4.setStarttime("3:00");
+        obj4.setStarttime("12:00");
         obj4.setDays("F");
         obj4.setLocation("Exploratory Hall L003");
         obj4.setTitle("Concurrent and Distrib Systems");
@@ -104,7 +104,8 @@ public class SubjectList extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Subject is added Successfuly",Toast.LENGTH_SHORT).show();
                     dbHelper.insertSUBJECT(subject.get(position).getTitle(), subject.get(position).getInstructor(),subject.get(position).getStarttime(), subject.get(position).getEndTime(), subject.get(position).getDays(), subject.get(position).getLat(), subject.get(position).getLongi() , subject.get(position).getLocation());
-                    calendarList.add(subject.get(position));
+                    //.add(subject.get(position));
+                    //calendarList.add(subject.get(position));
                     setAlarm(subject.get(position).getStarttime(), subject.get(position).getDays(), subject.get(position).getTitle(), subject.get(position).getLocation(), subject.get(position).getAlarmID());
                     Intent intent = new Intent(getApplicationContext(),AddRemoveActivity.class);
                     startActivity(intent);
@@ -114,13 +115,14 @@ public class SubjectList extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Subject is added Successfuly",Toast.LENGTH_SHORT).show();
                     dbHelper.insertSUBJECT(subject1.get(position).getTitle(), subject1.get(position).getInstructor(),subject1.get(position).getStarttime(), subject1.get(position).getEndTime(), subject1.get(position).getDays(), subject1.get(position).getLat(), subject1.get(position).getLongi() , subject1.get(position).getLocation());
-                    calendarList.add(subject1.get(position));
+                    //calendarList.add(subject1.get(position));
                     setAlarm(subject1.get(position).getStarttime(), subject1.get(position).getDays(), subject1.get(position).getTitle(), subject1.get(position).getLocation(), subject1.get(position).getAlarmID());
                     Intent intent = new Intent(getApplicationContext(),AddRemoveActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);basic.addtolist(calendarList);
+               // basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
                 //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
 
             }

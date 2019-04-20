@@ -81,7 +81,8 @@ public class NavActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String uri = "http://maps.google.com/maps?saddr=" + lat + "," + longt + "&daddr=" + list.get(position).getLat() + "," + list.get(position).getLongi();
+                //String uri = "http://maps.google.com/maps?saddr=" + lat + "," + longt + "&daddr=" + list.get(position).getLat() + "," + list.get(position).getLongi()+ "&travelmode=walking";
+                String uri = "http://maps.google.com/maps?&daddr=" + list.get(position).getLat() + "," + list.get(position).getLongi()+ "&mode=w";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
             }
