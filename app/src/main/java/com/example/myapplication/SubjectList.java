@@ -133,30 +133,28 @@ public class SubjectList extends AppCompatActivity {
 
         String[] timeArr = time.split(":");
         int hour = Integer.parseInt(timeArr[0]);
-        if (hour <= 8) {
-            hour += 12;
-        }
         int minute = Integer.parseInt(timeArr[1]);
         int[] numDays = {1, 1, 1};
+        String[] daysplit = sDay.split("-");
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         String[] notificationData = {time, title, location};
         Intent intent = new Intent(this, AlertReceiver.class);
         intent.putExtra("notificationData", notificationData);
         intent.putExtra("AlarmID", ID);
-        for (int i = 0; i < sDay.length(); i++) {
-            if (sDay.charAt(i) == 'M') {
+        for (int i = 0; i < daysplit.length; i++) {
+            if (daysplit[i].charAt(0) == 'M') {
                 ID += 2;
                 numDays[i] = 2;
-            } else if (sDay.charAt(i) == 'T') {
+            } else if (daysplit[i].charAt(0) == 'T') {
                 ID += 3;
                 numDays[i] = 3;
-            } else if (sDay.charAt(i) == 'W') {
+            } else if (daysplit[i].charAt(0) == 'W') {
                 ID += 4;
                 numDays[i] = 4;
-            } else if (sDay.charAt(i) == 'R') {
+            } else if (daysplit[i].charAt(0) == 'R') {
                 ID += 5;
                 numDays[i] = 5;
-            } else if (sDay.charAt(i) == 'F') {
+            } else if (daysplit[i].charAt(0) == 'F') {
                 ID += 6;
                 numDays[i] = 6;
             } else {
