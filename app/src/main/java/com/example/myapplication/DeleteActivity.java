@@ -32,6 +32,7 @@ public class DeleteActivity extends AppCompatActivity {
                 obj.setTitle(cursor.getString(cursor.getColumnIndex("title")));
                 obj.setLongi(cursor.getString(cursor.getColumnIndex("long")));
                 obj.setLat(cursor.getString(cursor.getColumnIndex("lat")));
+                obj.setDays(cursor.getString(cursor.getColumnIndex("days")));
                 obj.setLocation(cursor.getString(cursor.getColumnIndex("loc")));
                 obj.setInstructor(cursor.getString(cursor.getColumnIndex("inst")));
                 obj.setEndTime(cursor.getString(cursor.getColumnIndex("endtime")));

@@ -37,9 +37,9 @@ public class BasicActivity extends BaseActivity {
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         DBHelper db = new DBHelper(getApplicationContext());
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
         Cursor cursor = db.getAllSUBJECTs();
         ArrayList<SubjectClass> list = new ArrayList<>();
-        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
         if(cursor.moveToFirst()){
             while (!cursor.isAfterLast()) {
                 SubjectClass obj = new SubjectClass();
@@ -47,6 +47,7 @@ public class BasicActivity extends BaseActivity {
                 obj.setTitle(cursor.getString(cursor.getColumnIndex("title")));
                 obj.setLongi(cursor.getString(cursor.getColumnIndex("long")));
                 obj.setLat(cursor.getString(cursor.getColumnIndex("lat")));
+                obj.setDays(cursor.getString(cursor.getColumnIndex("days")));
                 obj.setLocation(cursor.getString(cursor.getColumnIndex("loc")));
                 obj.setInstructor(cursor.getString(cursor.getColumnIndex("inst")));
                 obj.setEndTime(cursor.getString(cursor.getColumnIndex("endtime")));
@@ -62,23 +63,39 @@ public class BasicActivity extends BaseActivity {
         for(int i=0;i<list.size();i++){
             Calendar startTime = Calendar.getInstance();
             SubjectClass temp = list.get(i);
-            startTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getStarttime()));
-            startTime.set(Calendar.MINUTE, getMin(temp.getStarttime()));
-            startTime.set(Calendar.MONTH, newMonth - 1);
-            startTime.set(Calendar.YEAR, newYear);
-            Calendar endTime = (Calendar) startTime.clone();
-            //endTime.add(Calendar.HOUR, getHour(temp.getEndTime()));
-            endTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getEndTime()));
-            endTime.set(Calendar.MINUTE, getMin(temp.getEndTime()));
-            endTime.set(Calendar.MONTH, newMonth - 1);
-            WeekViewEvent event = new WeekViewEvent(1, temp.getTitle(), startTime, endTime);
-            //event.setColor(getResources().getColor(R.color.event_color_01));
-            events.add(event);
+            int j;
+            int day1 = 0;
+            int day2 = 0;
+            if(temp.getDays().length()>1){
+                day1 = getDay1(temp.getDays());
+                day2 = getDay2(temp.getDays());
+                j=0;}
+            else{
+                day1 = getDay1(temp.getDays());
+                j=1;}
+            while(j<2) {
+                startTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getStarttime()));
+                startTime.set(Calendar.MINUTE, getMin(temp.getStarttime()));
+               // startTime.set(Calendar.DAY_OF_MONTH,Calendar.);
+                startTime.set(Calendar.MONTH, newMonth - 1);
+                startTime.set(Calendar.YEAR, newYear);
+                Calendar endTime = (Calendar) startTime.clone();
+                //endTime.add(Calendar.HOUR, getHour(temp.getEndTime()));
+                endTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getEndTime()));
+                //endTime.set(Calendar.DAY_OF_WEEK, day1);
+                endTime.set(Calendar.MINUTE, getMin(temp.getEndTime()));
+                endTime.set(Calendar.MONTH, newMonth - 1);
+                WeekViewEvent event = new WeekViewEvent(1, temp.getTitle(), startTime, endTime);
+                j++;
+                day1 = day2;
+                event.setColor(getResources().getColor(R.color.event_color_01));
+                events.add(event);
+            }
         }
 
 
 
-         /*Calendar startTime = Calendar.getInstance();
+        /*Calendar startTime = Calendar.getInstance();
         startTime.set(Calendar.HOUR_OF_DAY, 3);
         startTime.set(Calendar.MINUTE, 0);
         startTime.set(Calendar.MONTH, newMonth - 1);
@@ -92,6 +109,29 @@ public class BasicActivity extends BaseActivity {
         return events;
     }
 
+    public int getDay1(String s){
+        int day = 0;
+        String[] split = s.split("-");
+        if(split[0].equals("M")){day = 1;}
+        else if(split[0].equals("T")){day = 2;}
+        else if(split[0].equals("W")){day = 3;}
+        else if(split[0].equals("R")){day = 4;}
+        else if(split[0].equals("F")){day = 15;}
+        return day;
+
+    }
+
+    public int getDay2(String s){
+        int day = 0;
+        String[] split = s.split("-");
+        if(split[1].equals("M")){day = 1;}
+        else if(split[1].equals("T")){day = 2;}
+        else if(split[1].equals("W")){day = 3;}
+        else if(split[1].equals("R")){day = 4;}
+        else if(split[1].equals("F")){day = 15;}
+        return day;
+
+    }
 
     public int getHour(String s){
         int hour = 0;
@@ -104,8 +144,10 @@ public class BasicActivity extends BaseActivity {
     public int getMin(String s){
         int min = 0;
         String[] split = s.split(":");
-        String temp = split[1];
-        min = Integer.parseInt(temp);
+        //String temp = split[1];
+       // if(temp.contains("am")){temp=temp.replace("am","");}
+       // else if(temp.contains("pm")){temp=temp.replace("pm","");}
+        min = Integer.parseInt(split[1]);
         return min;
     }
 
