@@ -75,6 +75,7 @@ public class NotificationHelper extends ContextWrapper {
         Intent navIntent = new Intent(this, NavActivity.class);
         PendingIntent pendingIntent;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            // Should allow going back to the main screen from navigation
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
             stackBuilder.addNextIntentWithParentStack(navIntent);
             pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);

@@ -64,6 +64,8 @@ public class DeleteActivity extends AppCompatActivity {
     });
     }
 
+    // Should Delete an alarm when removing a class from the list
+    // - Jared
     private void cancelAlarm(int alarmID, String _days) {
         String[] dayArr = _days.split("-");
         int[] numDays = {1, 1, 1};
@@ -94,13 +96,12 @@ public class DeleteActivity extends AppCompatActivity {
 
             alarmManager.cancel(pendingIntent);
         }
-/*
+        /*
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, intent, 0);
 
         alarmManager.cancel(pendingIntent);
-
- */
+        */
     }
 }

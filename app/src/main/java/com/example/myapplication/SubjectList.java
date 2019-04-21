@@ -128,7 +128,8 @@ public class SubjectList extends AppCompatActivity {
             }
         });
     }
-    // Probably going to set the alarm from here
+    // Sets an alarm for the start time of a class on whatever day its on
+    // - Jared
      private void setAlarm(String time, String sDay, String title, String location, int ID) {
 
         String[] timeArr = time.split(":");
