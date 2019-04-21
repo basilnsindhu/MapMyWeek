@@ -1,5 +1,8 @@
 package com.example.myapplication;
+/*
 
+    CS 321-006 Team 4
+ */
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
