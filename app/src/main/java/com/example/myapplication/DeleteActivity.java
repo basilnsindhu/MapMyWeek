@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DeleteActivity extends AppCompatActivity {
     ListView listView;
@@ -50,6 +54,7 @@ public class DeleteActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                cancelAlarm(list.get(position).getAlarmID(), list.get(position).getDays());
                 dbHelper.deleteSUBJECT(Integer.valueOf(list.get(position).getId()));
                 Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(),AddRemoveActivity.class);
@@ -57,5 +62,45 @@ public class DeleteActivity extends AppCompatActivity {
                 finish();
             }
     });
+    }
+
+    private void cancelAlarm(int alarmID, String _days) {
+        String[] dayArr = _days.split("-");
+        int[] numDays = {1, 1, 1};
+        int ID = alarmID;
+        for (int i = 0; i < dayArr.length; i++) {
+            if (dayArr[i].charAt(0) == 'M') {
+                ID += 2;
+                numDays[i] = Calendar.MONDAY;
+            } else if (dayArr[i].charAt(0) == 'T') {
+                ID += 3;
+                numDays[i] = Calendar.TUESDAY;
+            } else if (dayArr[i].charAt(0) == 'W') {
+                ID += 4;
+                numDays[i] = Calendar.WEDNESDAY;
+            } else if (dayArr[i].charAt(0) == 'R') {
+                ID += 5;
+                numDays[i] = Calendar.THURSDAY;
+            } else if (dayArr[i].charAt(0) == 'F') {
+                ID += 6;
+                numDays[i] = Calendar.FRIDAY;
+            } else {
+                ID += 7;
+                numDays[i] = Calendar.SATURDAY;
+            }
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(this, AlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, intent, 0);
+
+            alarmManager.cancel(pendingIntent);
+        }
+/*
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, intent, 0);
+
+        alarmManager.cancel(pendingIntent);
+
+ */
     }
 }
