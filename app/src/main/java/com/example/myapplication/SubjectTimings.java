@@ -16,7 +16,7 @@ public class SubjectTimings extends AppCompatActivity {
             "Arts Management [AMGT]", "Assistive Technology [EDAT]", "Athletic Training Educ Program [ATEP]", "BA in Applied Science [BAS]", "Bachelor Individualized Study [BIS]",
             "Bioengineering [BENG]", "Biology [BIOL]", "Biosciences [BIOS]", "College of Science [COS]", "Computer Game Design [GAME]", "Computer Science [CS]", "Cyber Security Engineering [CYSE]",
             "Data Analytics Engineering [DAEN]", "Design [DSGN]", "Electrical & Computer Enginrg [ECE]", "Engineering [ENGR]", "Finance [FNAN]", "Forensic Science [FRSC]", "Geology [GEOL]",
-            "Government [GOVT]", "Information Technology [IT]", "Software Engineering [SWE]", "Statistics [STAT]", "System Engineering [SYST]"};
+            "Government [GOVT]", "Information Technology [IT]","Mathematics [MATH]", "Software Engineering [SWE]", "Statistics [STAT]", "System Engineering [SYST]"};
 
     EditText inputSearch;
 

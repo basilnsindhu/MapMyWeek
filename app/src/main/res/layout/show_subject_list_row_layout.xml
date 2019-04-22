@@ -34,26 +34,27 @@
 
         <TextView
             android:id="@+id/to_change_textView_guards_duties_list_row_layout"
-            android:layout_below="@id/duty_location_textView_guards_duties_list_row_layout"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/to_textView_guards_duties_list_row_layout"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:textSize="14dp"
             android:layout_height="wrap_content"
-            android:text="5am"/>
+            android:layout_below="@id/duty_location_textView_guards_duties_list_row_layout"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/to_textView_guards_duties_list_row_layout"
+            android:text="5am"
+            android:textColor="#fff"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/from_textView_guards_duties_list_row_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/duty_location_textView_guards_duties_list_row_layout"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="57dp"
             android:layout_toLeftOf="@+id/from_change_textView_guards_duties_list_row_layout"
-            android:layout_width="wrap_content"
+            android:text="End Time: "
             android:textColor="#fff"
-            android:textSize="14dp"
-            android:layout_height="wrap_content"
-            android:text="End Time: "/>
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/from_change_textView_guards_duties_list_row_layout"
@@ -82,40 +83,42 @@
 
         <TextView
             android:id="@+id/one_change"
-            android:layout_below="@id/to_change_textView_guards_duties_list_row_layout"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/one"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:textSize="14dp"
             android:layout_height="wrap_content"
-            android:text="5am"/>
+            android:layout_below="@id/to_change_textView_guards_duties_list_row_layout"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/one"
+            android:text="5am"
+            android:textColor="#fff"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/two"
-            android:layout_below="@id/from_change_textView_guards_duties_list_row_layout"
-            android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@+id/from_change_textView_guards_duties_list_row_layout"
             android:layout_width="wrap_content"
-            android:textColor="#fff"
-            android:textSize="14dp"
             android:layout_height="wrap_content"
-            android:text="Instructor:"/>
+            android:layout_below="@id/from_change_textView_guards_duties_list_row_layout"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="61dp"
+            android:layout_toLeftOf="@+id/from_change_textView_guards_duties_list_row_layout"
+            android:text="Instructor:"
+            android:textColor="#fff"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/two_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/from_change_textView_guards_duties_list_row_layout"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="9 PM"
             android:textColor="#fff"
-            android:textSize="14dp"
-            android:layout_height="wrap_content"
-            android:text="9 PM" />
+            android:textSize="14dp" />
     </RelativeLayout>
 
 </RelativeLayout>

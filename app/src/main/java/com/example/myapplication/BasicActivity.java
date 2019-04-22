@@ -65,7 +65,7 @@ public class BasicActivity extends BaseActivity {
 
 
         for(int i=0;i<list.size();i++){
-            Calendar startTime = Calendar.getInstance();
+            Calendar startTime;
             SubjectClass temp = list.get(i);
             int j;
             int day1 = 0;
@@ -78,6 +78,7 @@ public class BasicActivity extends BaseActivity {
                 day1 = getDay1(temp.getDays());
                 j=1;}
             while(j<2) {
+                startTime = Calendar.getInstance();
                 startTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getStarttime()));
                 startTime.set(Calendar.MINUTE, getMin(temp.getStarttime()));
                 startTime.set(Calendar.DAY_OF_MONTH,day1);
@@ -86,8 +87,8 @@ public class BasicActivity extends BaseActivity {
                 Calendar endTime = (Calendar) startTime.clone();
                 //endTime.add(Calendar.HOUR, getHour(temp.getEndTime()));
                 endTime.set(Calendar.HOUR_OF_DAY, getHour(temp.getEndTime()));
-                //endTime.set(Calendar.DAY_OF_WEEK, day1);
                 endTime.set(Calendar.MINUTE, getMin(temp.getEndTime()));
+                //endTime.set(Calendar.DAY_OF_WEEK, day1);
                 endTime.set(Calendar.MONTH, newMonth - 1);
                 WeekViewEvent event = new WeekViewEvent(1, temp.getTitle(), startTime, endTime);
                 j++;
@@ -125,11 +126,11 @@ public class BasicActivity extends BaseActivity {
         LocalDate ld = LocalDate.now();
 
         String[] split = s.split("-");
-        if(split[0].equals("M")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));}
-        else if(split[0].equals("T")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));}
-        else if(split[0].equals("W")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));}
-        else if(split[0].equals("R")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));}
-        else if(split[0].equals("F")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));}
+        if(split[0].equals("M")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));}
+        else if(split[0].equals("T")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.TUESDAY));}
+        else if(split[0].equals("W")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY));}
+        else if(split[0].equals("R")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));}
+        else if(split[0].equals("F")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));}
         day = ld.getDayOfMonth();
         return day;
 
@@ -140,11 +141,11 @@ public class BasicActivity extends BaseActivity {
         LocalDate ld = LocalDate.now();
 
         String[] split = s.split("-");
-        if(split[1].equals("M")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));}
-        else if(split[1].equals("T")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));}
-        else if(split[1].equals("W")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));}
-        else if(split[1].equals("R")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));}
-        else if(split[1].equals("F")){ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));}
+        if(split[1].equals("M")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));}
+        else if(split[1].equals("T")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.TUESDAY));}
+        else if(split[1].equals("W")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY));}
+        else if(split[1].equals("R")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));}
+        else if(split[1].equals("F")){ld = ld.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));}
         day = ld.getDayOfMonth();
         return day;
 
