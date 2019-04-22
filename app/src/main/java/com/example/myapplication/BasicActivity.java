@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.database.Cursor;
+import android.graphics.Color;
 
 import com.alamkanak.weekview.WeekViewEvent;
 
@@ -10,11 +11,11 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
-/**
- * A basic example of how to use week view library.
- * Created by Raquib-ul-Alam Kanak on 1/3/2014.
- * Website: http://alamkanak.github.io
+/*
+    Basil Sindhu
+    CS 321-006 Team 4
  */
 public class BasicActivity extends BaseActivity {
 
@@ -60,6 +61,7 @@ public class BasicActivity extends BaseActivity {
                 cursor.moveToNext();
             }
         }
+        String colors[] = {"event_color_01", "event_color_2"};
 
 
         for(int i=0;i<list.size();i++){
@@ -90,7 +92,8 @@ public class BasicActivity extends BaseActivity {
                 WeekViewEvent event = new WeekViewEvent(1, temp.getTitle(), startTime, endTime);
                 j++;
                 day1 = day2;
-                event.setColor(getResources().getColor(R.color.event_color_01));
+                //event.setColor(getResources().getColor(R.color.event_color_03));
+                event.setColor(getRandomColor());
                 events.add(event);
             }
         }
@@ -109,6 +112,11 @@ public class BasicActivity extends BaseActivity {
         event.setColor(getResources().getColor(R.color.event_color_01));
         events.add(event);*/
         return events;
+    }
+
+    public int getRandomColor(){
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }
 
     public int getDay1(String s){

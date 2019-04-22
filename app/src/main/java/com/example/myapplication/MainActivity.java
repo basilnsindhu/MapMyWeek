@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,8 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Calendar;
-
+/*
+    Basil Sindhu
+    CS 321-006 Team 4
+ */
 
 public class MainActivity extends AppCompatActivity {
 

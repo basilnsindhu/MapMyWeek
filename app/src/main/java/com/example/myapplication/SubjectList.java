@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,11 +15,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class SubjectList extends AppCompatActivity {
-    // Array of strings...
-    String[] mobileArray = {"Accounting [ACCT]","Anthropology [ANTH]","Arabic [ARAB]","Arts Management [AMGT]",
-            "Assistive Technology [EDAT]","Astronomy [ASTR]"};
-    ArrayList<SubjectClass> subject = new ArrayList<>();
-    ArrayList<SubjectClass> subject1 = new ArrayList<>();
+    ArrayList<ArrayList<SubjectClass>> fullList = new ArrayList<ArrayList<SubjectClass>>();
+    ArrayList<SubjectClass> game = new ArrayList<>(); //16
+    ArrayList<SubjectClass> cs = new ArrayList<>(); //17
+    ArrayList<SubjectClass> swe = new ArrayList<>(); //27
+    ArrayList<SubjectClass> ece = new ArrayList<>(); //21
+    ArrayList<SubjectClass> syst = new ArrayList<>(); //29
+    ArrayList<SubjectClass> def = new ArrayList<>();
+
     ArrayList<SubjectClass> calendarList = new ArrayList<>();
     BasicActivity basic = new BasicActivity();
     DBHelper dbHelper;
@@ -33,63 +35,28 @@ public class SubjectList extends AppCompatActivity {
        // mNotificationHelper = new NotificationHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_list);
-        final String positionBack = getIntent().getStringExtra("index");
+        final int positionBack = getIntent().getIntExtra("index", 0);
         dbHelper = new DBHelper(getApplicationContext());
-        SubjectClass obj = new SubjectClass();
-        obj.setEndTime("22:10");
-        obj.setInstructor("Kershberg");
-        obj.setStarttime("19:20");
-        obj.setDays("W");
-        obj.setLocation("Enterprise Hall 178");
-        obj.setTitle("Database Concepts");
-        obj.setLat("37.0902");
-        obj.setLongi("95.7129");
-        obj.setAlarmID(0);
-
-        SubjectClass obj1 = new SubjectClass();
-        obj1.setEndTime("19:10");
-        obj1.setInstructor("Sood");
-        obj1.setStarttime("16:30");
-        obj1.setDays("R");
-        obj1.setLocation("Sandbridge Hall 107");
-        obj1.setTitle("Security Enginerring");
-        obj1.setLat("37.0902");
-        obj1.setLongi("95.7129");
-        obj1.setAlarmID(100);
-        subject.add(obj);
-        subject.add(obj1);
+        initialize();
 
 
 
-
-        SubjectClass obj3 = new SubjectClass();
-        obj3.setEndTime("16:00");
-        obj3.setInstructor("Cheng");
-        obj3.setStarttime("15:15");
-        obj3.setLocation("Innovation Hall 132");
-        obj3.setTitle("Operating System");
-        obj3.setDays("M-W");
-        obj3.setLat("38.828630");
-        obj3.setLongi("-77.307440");
-        obj3.setAlarmID(300);
-
-        SubjectClass obj4 = new SubjectClass();
-        obj4.setEndTime("14:10");
-        obj4.setInstructor("Bell");
-        obj4.setStarttime("12:00");
-        obj4.setDays("F");
-        obj4.setLocation("Exploratory Hall L003");
-        obj4.setTitle("Concurrent and Distrib Systems");
-        obj4.setLat("37.0902");
-        obj4.setLongi("95.7129");
-        obj4.setAlarmID(400);
-        subject1.add(obj3);
-        subject1.add(obj4);
-        if(Integer.valueOf(positionBack)==0){
-            adapter =new SubjectsAdapter(getApplicationContext(),subject);
-        }
-        if(Integer.valueOf(positionBack)==1){
-            adapter =new SubjectsAdapter(getApplicationContext(),subject1);
+        switch (positionBack){
+            case 16: //game
+                adapter = new SubjectsAdapter(getApplicationContext(),game);
+                break;
+            case 17: //cs
+                adapter = new SubjectsAdapter(getApplicationContext(),cs);
+                break;
+            case 21: //cs
+                adapter = new SubjectsAdapter(getApplicationContext(),ece);
+                break;
+            case 27: //cs
+                adapter = new SubjectsAdapter(getApplicationContext(),swe);
+                break;
+            case 29: //cs
+                adapter = new SubjectsAdapter(getApplicationContext(),syst);
+                break;
         }
         ListView listView = (ListView) findViewById(R.id.subject_list);
         listView.setAdapter(adapter);
@@ -97,34 +64,13 @@ public class SubjectList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected item text from ListView
-               // String selectedItem = (String) parent.getItemAtPosition(position);
-
-                if(Integer.valueOf(positionBack)==0)
-                {
-                    Toast.makeText(getApplicationContext(),"Subject is added Successfuly",Toast.LENGTH_SHORT).show();
-                    dbHelper.insertSUBJECT(subject.get(position).getTitle(), subject.get(position).getInstructor(),subject.get(position).getStarttime(), subject.get(position).getEndTime(), subject.get(position).getDays(), subject.get(position).getLat(), subject.get(position).getLongi() , subject.get(position).getLocation());
-                    //.add(subject.get(position));
-                    //calendarList.add(subject.get(position));
-                    setAlarm(subject.get(position).getStarttime(), subject.get(position).getDays(), subject.get(position).getTitle(), subject.get(position).getLocation(), subject.get(position).getAlarmID());
-                    Intent intent = new Intent(getApplicationContext(),AddRemoveActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                if(Integer.valueOf(positionBack)==1)
-                {
-                    Toast.makeText(getApplicationContext(),"Subject is added Successfuly",Toast.LENGTH_SHORT).show();
-                    dbHelper.insertSUBJECT(subject1.get(position).getTitle(), subject1.get(position).getInstructor(),subject1.get(position).getStarttime(), subject1.get(position).getEndTime(), subject1.get(position).getDays(), subject1.get(position).getLat(), subject1.get(position).getLongi() , subject1.get(position).getLocation());
-                    //calendarList.add(subject1.get(position));
-                    setAlarm(subject1.get(position).getStarttime(), subject1.get(position).getDays(), subject1.get(position).getTitle(), subject1.get(position).getLocation(), subject1.get(position).getAlarmID());
-                    Intent intent = new Intent(getApplicationContext(),AddRemoveActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);basic.addtolist(calendarList);
-               // basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
-                //basic.onMonthChange(Calendar.YEAR,Calendar.MONTH);
-
+                Toast.makeText(getApplicationContext(),"Subject is added Successfuly",Toast.LENGTH_SHORT).show();
+                SubjectClass temp = (SubjectClass) adapter.getItem(position);
+                dbHelper.insertSUBJECT(temp.getTitle(), temp.getInstructor(),temp.getStarttime(), temp.getEndTime(), temp.getDays(), temp.getLat(), temp.getLongi() , temp.getLocation());
+                setAlarm(temp.getStarttime(),temp.getDays(), temp.getTitle(), temp.getLocation(), temp.getAlarmID());
+                Intent intent = new Intent(SubjectList.this,AddRemoveActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -170,6 +116,64 @@ public class SubjectList extends AppCompatActivity {
 
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY * 7,pendingIntent);
         }
+
+     }
+
+
+     private void initialize(){
+
+
+
+
+        SubjectClass obj = new SubjectClass();
+        obj.setEndTime("22:10");
+        obj.setInstructor("Kershberg");
+        obj.setStarttime("19:20");
+        obj.setDays("W");
+        obj.setLocation("Enterprise Hall 178");
+        obj.setTitle("CS450 - Database Concepts");
+        obj.setLat("37.0902");
+        obj.setLongi("95.7129");
+        obj.setAlarmID(0);
+        cs.add(obj);
+
+        SubjectClass obj1 = new SubjectClass();
+        obj1.setEndTime("19:10");
+        obj1.setInstructor("Sood");
+        obj1.setStarttime("16:30");
+        obj1.setDays("R");
+        obj1.setLocation("Sandbridge Hall 107");
+        obj1.setTitle("Security Enginerring");
+        obj1.setLat("37.0902");
+        obj1.setLongi("95.7129");
+        obj1.setAlarmID(100);
+        cs.add(obj1);
+
+        SubjectClass obj3 = new SubjectClass();
+        obj3.setEndTime("16:00");
+        obj3.setInstructor("Cheng");
+        obj3.setStarttime("15:15");
+        obj3.setLocation("Innovation Hall 132");
+        obj3.setTitle("Operating System");
+        obj3.setDays("M-W");
+        obj3.setLat("38.828630");
+        obj3.setLongi("-77.307440");
+        obj3.setAlarmID(300);
+         cs.add(obj3);
+
+        SubjectClass obj4 = new SubjectClass();
+        obj4.setEndTime("14:10");
+        obj4.setInstructor("Bell");
+        obj4.setStarttime("12:00");
+        obj4.setDays("F");
+        obj4.setLocation("Exploratory Hall L003");
+        obj4.setTitle("Concurrent and Distrib Systems");
+        obj4.setLat("37.0902");
+        obj4.setLongi("95.7129");
+        obj4.setAlarmID(400);
+        cs.add(obj4);
+
+        fullList.add(cs);
 
      }
 }

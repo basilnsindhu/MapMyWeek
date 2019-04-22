@@ -1,4 +1,8 @@
 package com.example.myapplication;
+/*
+    Basil Sindhu
+    CS 321-006 Team 4
+ */
 
 import android.content.Intent;
 import android.os.Bundle;
