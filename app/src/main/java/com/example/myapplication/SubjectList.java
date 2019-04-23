@@ -132,7 +132,7 @@ public class SubjectList extends AppCompatActivity {
         obj.setEndTime("22:00");//22:00
         obj.setInstructor("Kershberg");
         obj.setStarttime("19:20");//19:20
-        obj.setDays("T-W");//W
+        obj.setDays("W");//W
         obj.setLocation("Enterprise Hall 178");
         obj.setTitle("CS450 - Database Concepts");
         obj.setLat("38.829032");
@@ -144,7 +144,7 @@ public class SubjectList extends AppCompatActivity {
         obj1.setEndTime("19:10");//19:10
         obj1.setInstructor("Sood");
         obj1.setStarttime("16:30");//16:30
-        obj1.setDays("T-R");//R
+        obj1.setDays("R");//R
         obj1.setLocation("Sandbridge Hall 107");
         obj1.setTitle("CS469 - Security Enginerring");
         obj1.setLat("38.832508");
