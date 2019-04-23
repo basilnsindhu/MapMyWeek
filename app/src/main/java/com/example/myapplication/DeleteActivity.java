@@ -69,7 +69,7 @@ public class DeleteActivity extends AppCompatActivity {
     private void cancelAlarm(int alarmID, String _days) {
         String[] dayArr = _days.split("-");
         int[] numDays = {1, 1, 1};
-        int ID = alarmID;
+        int ID = alarmID * 100;
         for (int i = 0; i < dayArr.length; i++) {
             if (dayArr[i].charAt(0) == 'M') {
                 ID += 2;

@@ -80,7 +80,7 @@ public class SubjectList extends AppCompatActivity {
     // Sets an alarm for the start time of a class on whatever day its on
     // - Jared
      private void setAlarm(String time, String sDay, String title, String location, int alarmID) {
-        int ID = alarmID;
+        int ID = alarmID * 100;
         String[] timeArr = time.split(":");
         int hour = Integer.parseInt(timeArr[0]);
         int minute = Integer.parseInt(timeArr[1]);
@@ -149,7 +149,7 @@ public class SubjectList extends AppCompatActivity {
         obj1.setTitle("CS469 - Security Enginerring");
         obj1.setLat("38.832508");
         obj1.setLongi("-77.306490");
-        obj1.setAlarmID(100);
+        obj1.setAlarmID(1);
         cs.add(obj1);
 
         SubjectClass obj3 = new SubjectClass();
@@ -161,7 +161,7 @@ public class SubjectList extends AppCompatActivity {
         obj3.setDays("T-R");
         obj3.setLat("38.828630");
         obj3.setLongi("-77.307440");
-        obj3.setAlarmID(200);
+        obj3.setAlarmID(2);
         cs.add(obj3);
 
         SubjectClass obj4 = new SubjectClass();
@@ -173,7 +173,7 @@ public class SubjectList extends AppCompatActivity {
         obj4.setTitle("CS475 - Concurrent and Distrib Systems");
         obj4.setLat("38.829686");
         obj4.setLongi("-77.305506");
-        obj4.setAlarmID(300);
+        obj4.setAlarmID(3);
         cs.add(obj4);
 
 
@@ -189,7 +189,7 @@ public class SubjectList extends AppCompatActivity {
          obj5.setTitle("ECE101 - Intro to Electrical/Comp Engr");
          obj5.setLat("38.829898");
          obj5.setLongi("-77.306281");
-         obj5.setAlarmID(400);
+         obj5.setAlarmID(4);
          ece.add(obj5);
 
          SubjectClass obj6 = new SubjectClass();
@@ -201,7 +201,7 @@ public class SubjectList extends AppCompatActivity {
          obj6.setTitle("ECE201 - Intro to Signals and Systems");
          obj6.setLat("38.829686");
          obj6.setLongi("-77.305506");
-         obj6.setAlarmID(500);
+         obj6.setAlarmID(5);
          ece.add(obj6);
 
          SubjectClass obj7 = new SubjectClass();
@@ -213,7 +213,7 @@ public class SubjectList extends AppCompatActivity {
          obj7.setTitle("ECE220 - Continuos Time Signals and Systems");
          obj7.setLat("38.828630");
          obj7.setLongi("-77.307440");
-         obj7.setAlarmID(600);
+         obj7.setAlarmID(6);
          ece.add(obj7);
 
          SubjectClass obj8 = new SubjectClass();
@@ -225,7 +225,7 @@ public class SubjectList extends AppCompatActivity {
          obj8.setTitle("ECE305 - Electromagnetic Theory");
          obj8.setLat("38.832995");
          obj8.setLongi("-77.308255");
-         obj8.setAlarmID(700);
+         obj8.setAlarmID(7);
          ece.add(obj8);
 
 
@@ -238,7 +238,7 @@ public class SubjectList extends AppCompatActivity {
          obj9.setTitle("ECE331 - Digital System Design");
          obj9.setLat("38.833185");
          obj9.setLongi("-77.307531");
-         obj9.setAlarmID(900);
+         obj9.setAlarmID(9);
          ece.add(obj9);
 
          SubjectClass obj10 = new SubjectClass();
@@ -250,7 +250,7 @@ public class SubjectList extends AppCompatActivity {
          obj10.setTitle("ECE415 - Power System Analysis");
          obj10.setLat("38.829032");
          obj10.setLongi("-77.306368");
-         obj10.setAlarmID(1000);
+         obj10.setAlarmID(10);
          ece.add(obj10);
 
          SubjectClass obj11 = new SubjectClass();
@@ -262,7 +262,7 @@ public class SubjectList extends AppCompatActivity {
          obj11.setTitle("ECE421 - Clsscl Systm and Cntrl Thry");
          obj11.setLat("38.832995");
          obj11.setLongi("-77.308255");
-         obj11.setAlarmID(1100);
+         obj11.setAlarmID(11);
          ece.add(obj11);
 
          SubjectClass obj12 = new SubjectClass();
@@ -274,7 +274,7 @@ public class SubjectList extends AppCompatActivity {
          obj12.setTitle("ECE422 - Digital Control Systems");
          obj12.setLat("38.828630");
          obj12.setLongi("-77.307440");
-         obj12.setAlarmID(1200);
+         obj12.setAlarmID(12);
          ece.add(obj12);
 
          SubjectClass obj13 = new SubjectClass();
@@ -286,7 +286,7 @@ public class SubjectList extends AppCompatActivity {
          obj13.setTitle("ECE465 - Computer Networking Protocols");
          obj13.setLat("38.828135");
          obj13.setLongi("-77.306315");
-         obj13.setAlarmID(1300);
+         obj13.setAlarmID(13);
          ece.add(obj13);
 
 
@@ -301,7 +301,7 @@ public class SubjectList extends AppCompatActivity {
          obj14.setTitle("MATH113 - Analytic Geometry/Calculus I Lecture");
          obj14.setLat("38.8307");
          obj14.setLongi("-77.3077");
-         obj14.setAlarmID(1400);
+         obj14.setAlarmID(14);
          math.add(obj14);
 
          SubjectClass obj15 = new SubjectClass();
@@ -313,7 +313,7 @@ public class SubjectList extends AppCompatActivity {
          obj15.setTitle("MATH113 - Analytic Geometry/Calculus I Recitation");
          obj15.setLat("38.8341");
          obj15.setLongi("-77.3089");
-         obj15.setAlarmID(1500);
+         obj15.setAlarmID(15);
          math.add(obj15);
 
          SubjectClass obj16 = new SubjectClass();
@@ -325,7 +325,7 @@ public class SubjectList extends AppCompatActivity {
          obj16.setTitle("MATH114 - Analytic Geometry/Calculus II Lecture");
          obj16.setLat("38.8306");
          obj16.setLongi("-77.30647");
-         obj16.setAlarmID(1600);
+         obj16.setAlarmID(16);
          math.add(obj16);
 
          SubjectClass obj17 = new SubjectClass();
@@ -337,7 +337,7 @@ public class SubjectList extends AppCompatActivity {
          obj17.setTitle("MATH114 - Analytic Geometry/Calculus II Recitation");
          obj17.setLat("38.82788");
          obj17.setLongi("-77.3048");
-         obj17.setAlarmID(1700);
+         obj17.setAlarmID(17);
          math.add(obj17);
 
          SubjectClass obj18 = new SubjectClass();
@@ -349,7 +349,7 @@ public class SubjectList extends AppCompatActivity {
          obj18.setTitle("MATH125 - Discrete Mathematics I");
          obj18.setLat("38.8289");
          obj18.setLongi("-77.30609");
-         obj18.setAlarmID(1800);
+         obj18.setAlarmID(18);
          math.add(obj18);
 
          SubjectClass obj19 = new SubjectClass();
@@ -361,7 +361,7 @@ public class SubjectList extends AppCompatActivity {
          obj19.setTitle("MATH203 - Linear Algebra");
          obj19.setLat("38.8306");
          obj19.setLongi("-77.30647");
-         obj19.setAlarmID(1900);
+         obj19.setAlarmID(19);
          math.add(obj19);
 
          SubjectClass obj20 = new SubjectClass();
@@ -373,7 +373,7 @@ public class SubjectList extends AppCompatActivity {
          obj20.setTitle("MATH213 - Analytic Geom/Calculus III Lecture");
          obj20.setLat("38.8299");
          obj20.setLongi("-77.3081");
-         obj20.setAlarmID(2000);
+         obj20.setAlarmID(20);
          math.add(obj20);
 
          SubjectClass obj21 = new SubjectClass();
@@ -385,7 +385,7 @@ public class SubjectList extends AppCompatActivity {
          obj21.setTitle("MATH213 - Analytic Geom/Calculus III Recitation");
          obj21.setLat("38.8321");
          obj21.setLongi("-77.3092");
-         obj21.setAlarmID(2100);
+         obj21.setAlarmID(21);
          math.add(obj21);
 
 
@@ -400,7 +400,7 @@ public class SubjectList extends AppCompatActivity {
          obj22.setTitle("SYST101 - Understanding Syst Engr");
          obj22.setLat("38.834383");
          obj22.setLongi("-77.309063");
-         obj22.setAlarmID(2200);
+         obj22.setAlarmID(22);
          syst.add(obj22);
 
          SubjectClass obj23 = new SubjectClass();
@@ -412,7 +412,7 @@ public class SubjectList extends AppCompatActivity {
          obj23.setTitle("SYST320 - Dynamical Systems II");
          obj23.setLat("38.829898");
          obj23.setLongi("-77.306281");
-         obj23.setAlarmID(2300);
+         obj23.setAlarmID(23);
          syst.add(obj23);
 
          SubjectClass obj24 = new SubjectClass();
@@ -424,7 +424,7 @@ public class SubjectList extends AppCompatActivity {
          obj24.setTitle("SYST420 - Network Analysis");
          obj24.setLat("38.827759");
          obj24.setLongi("-77.305059");
-         obj24.setAlarmID(2400);
+         obj24.setAlarmID(24);
          syst.add(obj24);
 
          SubjectClass obj25 = new SubjectClass();
@@ -436,7 +436,7 @@ public class SubjectList extends AppCompatActivity {
          obj25.setTitle("SYST 460 - Intro to Air Traffic Control ");
          obj25.setLat("38.828809");
          obj25.setLongi("-77.308554");
-         obj25.setAlarmID(2500);
+         obj25.setAlarmID(25);
          syst.add(obj25);
 
          SubjectClass obj26 = new SubjectClass();
@@ -448,7 +448,7 @@ public class SubjectList extends AppCompatActivity {
          obj26.setTitle("SYST438 - Ana Financial Eng/Econometrics");
          obj26.setLat("38.828630");
          obj26.setLongi("-77.307440");
-         obj26.setAlarmID(2600);
+         obj26.setAlarmID(26);
          syst.add(obj26);
 
 
@@ -462,7 +462,7 @@ public class SubjectList extends AppCompatActivity {
          obj27.setTitle("SWE301 -Internship Preparation");
          obj27.setLat("38.828630");
          obj27.setLongi("-77.307440");
-         obj27.setAlarmID(2700);
+         obj27.setAlarmID(27);
          swe.add(obj27);
 
          SubjectClass obj28 = new SubjectClass();
@@ -474,7 +474,7 @@ public class SubjectList extends AppCompatActivity {
          obj28.setTitle("SWE437 - Software Testing/Maintenance");
          obj28.setLat("38.835077");
          obj28.setLongi("-77.307923");
-         obj28.setAlarmID(2800);
+         obj28.setAlarmID(28);
          swe.add(obj28);
 
          SubjectClass obj29 = new SubjectClass();
@@ -486,7 +486,7 @@ public class SubjectList extends AppCompatActivity {
          obj29.setTitle("SWE432 - Web App Development");
          obj29.setLat("8.835077");
          obj29.setLongi("-77.307923");
-         obj29.setAlarmID(2900);
+         obj29.setAlarmID(29);
          swe.add(obj29);
 
          SubjectClass obj30 = new SubjectClass();
@@ -498,7 +498,7 @@ public class SubjectList extends AppCompatActivity {
          obj30.setTitle("SWE443 - Software Architectures");
          obj30.setLat("38.828630");
          obj30.setLongi("-77.307440");
-         obj30.setAlarmID(3000);
+         obj30.setAlarmID(30);
          swe.add(obj30);
 
          SubjectClass obj31 = new SubjectClass();
@@ -510,7 +510,7 @@ public class SubjectList extends AppCompatActivity {
          obj31.setTitle("SWE510 - Object-Oriented Programming java");
          obj31.setLat("38.828630");
          obj31.setLongi("-77.307440");
-         obj31.setAlarmID(3100);
+         obj31.setAlarmID(31);
          swe.add(obj31);
 
      }
