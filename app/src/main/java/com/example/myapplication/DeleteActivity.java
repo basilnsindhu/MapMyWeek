@@ -64,29 +64,31 @@ public class DeleteActivity extends AppCompatActivity {
     });
     }
 
+    // Should Delete an alarm when removing a class from the list
+    // - Jared
     private void cancelAlarm(int alarmID, String _days) {
         String[] dayArr = _days.split("-");
         int[] numDays = {1, 1, 1};
-        int ID = alarmID;
+        int ID = alarmID * 100;
         for (int i = 0; i < dayArr.length; i++) {
             if (dayArr[i].charAt(0) == 'M') {
                 ID += 2;
-                numDays[i] = Calendar.MONDAY;
+                numDays[i] = 2;
             } else if (dayArr[i].charAt(0) == 'T') {
                 ID += 3;
-                numDays[i] = Calendar.TUESDAY;
+                numDays[i] = 3;
             } else if (dayArr[i].charAt(0) == 'W') {
                 ID += 4;
-                numDays[i] = Calendar.WEDNESDAY;
+                numDays[i] = 4;
             } else if (dayArr[i].charAt(0) == 'R') {
                 ID += 5;
-                numDays[i] = Calendar.THURSDAY;
+                numDays[i] = 5;
             } else if (dayArr[i].charAt(0) == 'F') {
                 ID += 6;
-                numDays[i] = Calendar.FRIDAY;
+                numDays[i] = 6;
             } else {
                 ID += 7;
-                numDays[i] = Calendar.SATURDAY;
+                numDays[i] = 7;
             }
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(this, AlertReceiver.class);
@@ -94,13 +96,12 @@ public class DeleteActivity extends AppCompatActivity {
 
             alarmManager.cancel(pendingIntent);
         }
-/*
+        /*
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, intent, 0);
 
         alarmManager.cancel(pendingIntent);
-
- */
+        */
     }
 }

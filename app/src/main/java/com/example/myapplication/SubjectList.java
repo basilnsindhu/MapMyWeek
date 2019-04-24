@@ -77,9 +77,10 @@ public class SubjectList extends AppCompatActivity {
             }
         });
     }
-    // Probably going to set the alarm from here
-     private void setAlarm(String time, String sDay, String title, String location, int ID) {
-
+    // Sets an alarm for the start time of a class on whatever day its on
+    // - Jared
+     private void setAlarm(String time, String sDay, String title, String location, int alarmID) {
+        int ID = alarmID * 100;
         String[] timeArr = time.split(":");
         int hour = Integer.parseInt(timeArr[0]);
         int minute = Integer.parseInt(timeArr[1]);
@@ -128,10 +129,10 @@ public class SubjectList extends AppCompatActivity {
 
         //CS
         SubjectClass obj = new SubjectClass();
-        obj.setEndTime("22:00");
+        obj.setEndTime("22:00");//22:00
         obj.setInstructor("Kershberg");
-        obj.setStarttime("19:20");
-        obj.setDays("W");
+        obj.setStarttime("19:20");//19:20
+        obj.setDays("W");//W
         obj.setLocation("Enterprise Hall 178");
         obj.setTitle("CS450 - Database Concepts");
         obj.setLat("38.829032");
@@ -140,10 +141,10 @@ public class SubjectList extends AppCompatActivity {
         cs.add(obj);
 
         SubjectClass obj1 = new SubjectClass();
-        obj1.setEndTime("19:10");
+        obj1.setEndTime("19:10");//19:10
         obj1.setInstructor("Sood");
-        obj1.setStarttime("16:30");
-        obj1.setDays("R");
+        obj1.setStarttime("16:30");//16:30
+        obj1.setDays("R");//R
         obj1.setLocation("Sandbridge Hall 107");
         obj1.setTitle("CS469 - Security Enginerring");
         obj1.setLat("38.832508");
