@@ -1,4 +1,8 @@
 package com.example.myapplication;
+/*
+Neel patel
+    CS 321-006 Team 4
+ */
 
 public class SubjectClass {
     String title;

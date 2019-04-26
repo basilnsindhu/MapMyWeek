@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+/*
+Neel patel
+    CS 321-006 Team 4
+ */
 
 public class SubjectList extends AppCompatActivity {
     ArrayList<ArrayList<SubjectClass>> fullList = new ArrayList<ArrayList<SubjectClass>>();

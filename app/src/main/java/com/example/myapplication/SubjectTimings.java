@@ -10,6 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+/*
+Neel patel
+    CS 321-006 Team 4
+ */
 
 public class SubjectTimings extends AppCompatActivity {
     String[] subjectArray = {"Accounting[ACCT]", "African & Af-American Studies [AFAM]", "Anthropology [ANTH]", "Applied Information Technology [AIT]", "Arabic [ARAB]", "Art History [ARTH]", "Art and Visual Technology [AVT]",
