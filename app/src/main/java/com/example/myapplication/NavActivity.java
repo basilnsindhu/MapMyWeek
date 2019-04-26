@@ -24,6 +24,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+/*
+Neel patel
+    CS 321-006 Team 4
+ */
 
 public class NavActivity extends AppCompatActivity {
     ListView listView;

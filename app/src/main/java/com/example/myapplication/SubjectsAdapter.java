@@ -8,6 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+/*
+Neel patel
+    CS 321-006 Team 4
+ */
 
 public class SubjectsAdapter extends BaseAdapter{
     Context context;
